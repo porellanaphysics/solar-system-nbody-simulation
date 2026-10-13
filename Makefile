@@ -24,3 +24,4 @@ animate:
 
 clean:
 	rm -f rssFinal condIni condIniFacil pruebaVerdet pruebaAceleracion *.o *.mod resultado.dat
+
