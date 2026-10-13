@@ -1,0 +1,33 @@
+# Compiled binaries and build files
+*.o
+*.mod
+*.exe
+rssFinal
+rss
+condIni
+condIniFacil
+pruebaVerdet
+pruebaAceleracion
+
+# Massive simulation trajectory outputs (> 100MB exceeds GitHub hard limit)
+resultado.dat
+*.dat.bak
+
+# Archives and temporary files
+*.rar
+*.zip
+*.tar.gz
+tempCodeRunnerFile.*
+
+# Python caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+venv/
+.env/
+
+# System and editor files
+.DS_Store
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,19 @@
+Sistema reescalado:
+
+Definiciones:
+- r' = r / UA
+- m' = m / Ms
+- t' = t / μ, con μ = sqrt(G * Ms / UA³)
+
+Derivación:
+1. Se tiene que μ² = G * Ms / UA³, de donde se deduce:
+   G * Ms = μ² * UA³.
+
+2. Al elegir UA como unidad de longitud (UA = 1 en el sistema reescalado) y μ como la unidad inversa de tiempo, se obtiene:
+   G * Ms = μ² * 1³ = μ².
+
+3. Dado que el escalado temporal se define usando μ, en el sistema reescalado el parámetro gravitacional se normaliza a 1:
+   G * Ms → 1.
+
+Conclusión:
+Con las definiciones r' = r / UA, m' = m / Ms y t' = t / μ (con μ = sqrt(G * Ms / UA³)), el producto G * Ms se reescala a 1 en el sistema adimensionalizado.
