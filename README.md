@@ -19,13 +19,27 @@ This project employs the **symplectic Velocity-Verlet algorithm** in a **non-dim
 
 ---
 
-## Visualizations
+## Simulation Visualizations & Orbital Dynamics
 
-| Multi-Planetary Orbits (2D Trajectory Plane) | Mercury Perihelion Advance & Precession |
+### 1. Planetary Orbits: Outer Gas Giants vs. Inner Terrestrial System
+![Solar System Comparison](assets/solar_system_orbits_comparison.png)
+*Left: Complete 9-body Solar System up to Neptune ($r \sim 30\text{ AU}$). Right: Detailed zoom of the inner terrestrial planets ($r < 1.8\text{ AU}$) with accurate orbital eccentricities and barycentric solar wobble.*
+
+---
+
+### 2. Radial Distance Evolution & Orbital Stability
+![Orbital Distances over Time](assets/orbital_distances_time.png)
+*Time evolution of planetary radial distances $r(t)$ in AU across the simulation, showing strict periodic bounds without secular energy dissipation (Terrestrial planets top, Gas giants bottom).*
+
+---
+
+### 3. Mercury Perihelion Advance & N-Body Precession
+| Rosette Precession Detail | Perihelion Precession Extrema |
 | :---: | :---: |
-| ![Solar System Orbits](assets/image.png) | ![Mercury Perihelion](assets/perihelios.png) |
+| ![Mercury Precession Detail](assets/mercury_precession_detail.png) | ![Mercury Perihelion](assets/perihelios.png) |
+| *Color-coded trajectory tracking the shift in Mercury's perihelion point over successive orbits.* | *Time-dependent oscillations in orbital perihelion distance.* |
 
-> 🪐 **Cinematic 3D Animation**: Rendered using **Manim** (`manimPlan.py`), generating a perspective camera fly-through with scaled astronomical velocities and planetary color palettes.
+> 🪐 **Cinematic 3D Animation**: Rendered using **Manim** (`scripts/manimPlan.py`), generating a perspective camera fly-through with scaled astronomical velocities and planetary color palettes.
 
 ---
 
@@ -77,6 +91,7 @@ This guarantees that total energy fluctuates within a tightly bounded envelope r
 │   ├── pruebaVerdet.f95    # Verlet integrator unit verification
 │   └── pruebaAceleracion.f95 # Gravitational acceleration benchmark
 ├── scripts/                # Visualization and data processing
+│   ├── generar_graficas.py # Batch generator for high-res publication figures
 │   ├── mostrarRes.py       # Interactive Matplotlib visualizer (pan & zoom)
 │   ├── manimPlan.py        # 3D cinematic animation in Manim
 │   └── csvToDat.py         # CSV to Fortran unformatted/dat converter
@@ -87,6 +102,9 @@ This guarantees that total energy fluctuates within a tightly bounded envelope r
 │   ├── datosReales.dat     # Ephemeris verification baseline
 │   └── estadoInicial.dat   # Full 9-body initial state vector (x, y, vx, vy, m)
 ├── assets/                 # Figures and visual plots
+│   ├── solar_system_orbits_comparison.png  # Full system vs inner planets
+│   ├── orbital_distances_time.png          # Radial distances vs time
+│   ├── mercury_precession_detail.png       # Mercury perihelion detail
 │   ├── image.png           # 2D orbital planes overview
 │   └── perihelios.png      # Perihelion precession plot
 ├── docs/                   # Academic documentation and assignment notes
@@ -118,7 +136,13 @@ make run
 ```
 This compiles `src/rssFinal.f95` with `-O3` optimization, reads `estadoInicial.dat`, and integrates the system for 240,000 steps ($h = 8 \times 10^{-5}$), generating `resultado.dat`.
 
-### 3. Interactive Visualization
+### 3. Generate High-Resolution Figures
+To generate the publication figures shown in this README:
+```bash
+python3 scripts/generar_graficas.py
+```
+
+### 4. Interactive Visualization
 Launch the interactive 2D orbital visualizer:
 ```bash
 make plot
@@ -126,7 +150,7 @@ make plot
 ```
 > **Controls**: Use mouse scroll to zoom in/out interactively around inner terrestrial or outer gas giant orbits.
 
-### 4. 3D Manim Animation
+### 5. 3D Manim Animation
 To render the 3D cinematic animation:
 ```bash
 make animate

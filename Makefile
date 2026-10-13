@@ -3,7 +3,7 @@ FC ?= gfortran
 FFLAGS = -O3 -Wall -fdefault-real-8
 PYTHON ?= python3
 
-.PHONY: all clean run plot animate test
+.PHONY: all clean run plot figures animate test
 
 all: rssFinal condIni
 
@@ -15,6 +15,9 @@ condIni: src/condIni.f95
 
 run: rssFinal
 	./rssFinal
+
+figures:
+	$(PYTHON) scripts/generar_graficas.py
 
 plot:
 	$(PYTHON) scripts/mostrarRes.py
